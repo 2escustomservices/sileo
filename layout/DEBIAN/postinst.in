@@ -62,12 +62,6 @@ echo "Package: *" > /etc/apt/preferences.d/chimera
 echo "Pin: release o=Chimera Repo" >> /etc/apt/preferences.d/chimera
 echo "Pin-Priority: 1000" >> /etc/apt/preferences.d/chimera
 
-rm -f /etc/apt/preferences.d/checkra1n 2> /dev/null || true
-ln -s /dev/null /etc/apt/preferences.d/checkra1n
-
-rm -f $sourcesDir/sileo.sources.bak 2> /dev/null || true
-rm -f $sourcesDir/sileo-base.sources.bak 2> /dev/null || true
-
 function finish() {
         f="${1}"
 
@@ -80,6 +74,19 @@ function finish() {
 
         echo "finish:${f}" >&${sileo[0]}
 }
+
+if [[ "$1" == triggered ]]; then
+    # Trigger resprings
+    if [[ -z "${SILEO}" ]]; then
+        exit 0
+    fi
+    if [[ "$2" == "/Applications" ]]; then
+        finish uicache
+    elif [[ "$2" == "/Library/MobileSubstrate/DynamicLibraries" && -n "${SILEO}" ]]; then
+        finish restart
+    fi
+    exit 0
+fi
 
 finish uicache
 
