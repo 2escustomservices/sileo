@@ -10,6 +10,33 @@ if ! [ -s $sourcesDir/sileo.sources ]; then
         echo -e "" > $sourcesDir/sileo.sources
 fi
 
+if [ -s $sourcesDir/cydia.list ]; then
+        if grep -Fxq "deb https://apt.bingner.com/ ./" $sourcesDir/cydia.list ;
+        then
+                if ! [ -s $sourcesDir/elucubratus.sources ]; then
+                        echo "Installed Elucubratus Repo"
+                        echo -e "" > $sourcesDir/elucubratus.sources
+                        sed -i.bak '1s;^;Types: deb\
+URIs: https://apt.bingner.com/\
+Suites: ./\
+Components:\
+\
+;' $sourcesDir/elucubratus.sources
+                fi
+        fi
+fi
+
+if ! grep -Fxq "URIs: https://repounclutter.coolstar.org/" $sourcesDir/sileo.sources ;
+then
+        echo "Installed ModMyTTD+ Repo"
+        sed -i.bak '1s;^;Types: deb\
+URIs: https://repounclutter.coolstar.org/\
+Suites: ./\
+Components:\
+\
+;' $sourcesDir/sileo.sources
+fi
+
 if ! grep -Fxq "URIs: https://repo.chariz.com/" $sourcesDir/sileo.sources ;
 then
         echo "Installed Chariz Repo"
