@@ -119,7 +119,6 @@ final class RepoManager {
             }
             
             guard !hasRepo(with: normalizedURL),
-                  normalizedURL.host?.localizedCaseInsensitiveContains("apt.bingner.com") == false,
                   normalizedURL.host?.localizedCaseInsensitiveContains("repo.chariz.io") == false
             else {
                 continue
@@ -187,8 +186,7 @@ final class RepoManager {
         }
         
         for repoURL in uris {
-            guard !repoURL.localizedCaseInsensitiveContains("apt.bingner.com"),
-                  !repoURL.localizedCaseInsensitiveContains("repo.chariz.io"),
+            guard !repoURL.localizedCaseInsensitiveContains("repo.chariz.io"),
                   !hasRepo(with: URL(string: repoURL)!)
             else {
                 continue
