@@ -97,7 +97,11 @@ final class RepoManager {
             writeListToFile()
         }
         #else
-        let directory = URL(fileURLWithPath: "/etc/apt/sources.list.d")
+        var directory = URL(fileURLWithPath: "/etc/apt/sources.list.d")
+        if FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/elucubratus.sources") {
+            directory = URL(fileURLWithPath: "/etc/apt/sileo.list.d")
+        }
+
         for item in directory.implicitContents {
             if item.pathExtension == "list" {
                 parseListFile(at: item)
@@ -903,6 +907,7 @@ final class RepoManager {
         var sileoList = ""
         if FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/procursus.sources") ||
            FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/chimera.sources") ||
+           FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/elucubratus.sources") ||
            FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/electra.list") {
             sileoList = "/etc/apt/sources.list.d/sileo.sources"
         } else {
