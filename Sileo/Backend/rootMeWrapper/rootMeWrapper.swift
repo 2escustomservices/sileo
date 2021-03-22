@@ -146,7 +146,7 @@ func cloneFileAsRoot(from: URL, to: URL) {
     if FileManager.default.fileExists(atPath: "/usr/bin/bsdcp") {
         spawnAsRoot(command: "bsdcp -c '\(from.path)' '\(to.path)' ; chown 0:0 '\(to.path)' ; chmod 0644 '\(to.path)'")
     } else {
-        spawnAsRoot(command: "cp -c '\(from.path)' '\(to.path)' ; chown 0:0 '\(to.path)' ; chmod 0644 '\(to.path)'")
+        spawnAsRoot(command: "ln -s '\(from.path)' '\(to.path)' ; chown 0:0 '\(to.path)' ; chmod 0644 '\(to.path)'")
     }
     #endif
 }
