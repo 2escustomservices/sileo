@@ -149,6 +149,10 @@ func cloneFileAsRoot(from: URL, to: URL) {
         spawnAsRoot(args: ["/usr/bin/bsdcp", "-c", "\(from.path)", "\(to.path)"])
         spawnAsRoot(args: ["/usr/bin/chown", "0:0", "\(to.path)"])
         spawnAsRoot(args: ["/usr/bin/chmod", "0644", "\(to.path)"])
+    } else {
+        spawnAsRoot(args: ["ln", "-s", "\(from.path)", "\(to.path)"])
+        spawnAsRoot(args: ["/usr/bin/chown", "0:0", "\(to.path)"])
+        spawnAsRoot(args: ["/usr/bin/chmod", "0644", "\(to.path)"])
     }
     #endif
 }
