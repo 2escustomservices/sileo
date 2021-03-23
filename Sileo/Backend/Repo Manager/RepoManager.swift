@@ -123,7 +123,6 @@ final class RepoManager {
         var sourcesDir: URL!
         if FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/procursus.sources") ||
             FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/chimera.sources") ||
-            FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/elucubratus.sources") ||
             FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/electra.list") {
             sourcesDir = URL(string: "/etc/apt/sources.list.d") } else {
                 sourcesDir = URL(string: "/etc/apt/sileo.list.d")
@@ -868,7 +867,6 @@ final class RepoManager {
         var sileoList = ""
         if FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/procursus.sources") ||
             FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/chimera.sources") ||
-            FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/elucubratus.sources") ||
             FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/electra.list") {
             sileoList = "/etc/apt/sources.list.d/sileo.sources" } else {
                 sileoList = "/etc/apt/sileo.list.d/sileo.sources"
