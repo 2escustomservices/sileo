@@ -907,7 +907,6 @@ final class RepoManager {
         var sileoList = ""
         if FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/procursus.sources") ||
            FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/chimera.sources") ||
-           FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/elucubratus.sources") ||
            FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/electra.list") {
             sileoList = "/etc/apt/sources.list.d/sileo.sources"
         } else {
