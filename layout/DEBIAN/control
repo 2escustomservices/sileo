@@ -3,7 +3,7 @@ Priority: required
 Section: Packaging
 Maintainer: CoolStar <coolstarorganization@gmail.com>
 Architecture: iphoneos-arm
-Version: 2.0.1
+Version: 2.0.2-tale1
 Icon: https://getsileo.app/img/icon.png
 SileoDepiction: https://featuredpage.getsileo.app/depiction.json
 Depends: apt (>= 1.8.0), coreutils (>=8.31-1), dpkg (>= 1.19.2-4), zsh | bash, cy+cpu.arm64, firmware(>=12.2) | org.swift.libswift (>=5.0)
