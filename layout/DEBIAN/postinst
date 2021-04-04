@@ -26,6 +26,17 @@ Components:\
 \
 ;' $sourcesDir/elucubratus.sources
                 fi
+
+                if ! grep -Fxq "URIs: https://repo.getsileo.app/" $sourcesDir/sileo.sources ;
+then
+        echo "Installed Sileo Repo"
+        sed -i.bak '1s;^;Types: deb\
+URIs: https://repo.getsileo.app/\
+Suites: ./\
+Components:\
+\
+;' $sourcesDir/sileo.sources
+fi
         fi
 fi
 
