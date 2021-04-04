@@ -98,7 +98,7 @@ final class RepoManager {
         }
         #else
         var directory = URL(fileURLWithPath: "/etc/apt/sources.list.d")
-        if FileManager.default.fileExists(atPath: "/etc/apt/sources.list.d/elucubratus.sources") {
+        if FileManager.default.fileExists(atPath: "/etc/apt/sileo.list.d/elucubratus.sources") {
             directory = URL(fileURLWithPath: "/etc/apt/sileo.list.d")
         }
 
