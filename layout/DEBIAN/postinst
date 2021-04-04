@@ -36,7 +36,7 @@ Suites: ./\
 Components:\
 \
 ;' $sourcesDir/sileo.sources
-fi
+                fi
         fi
 fi
 
