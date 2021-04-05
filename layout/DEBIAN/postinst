@@ -2,8 +2,6 @@
 sourcesDir="/etc/apt/sources.list.d"
 
 rm /etc/apt/sources.list.d/sileo.list 2> /dev/null || true
-touch $sourcesDir/sileo.sources
-
 cr="\n"
 
 if [ -s $sourcesDir/cydia.list ]; then
@@ -14,6 +12,7 @@ if [ -s $sourcesDir/cydia.list ]; then
                 sourcesDir="/etc/apt/sileo.list.d"
                 if ! [ -s $sourcesDir ]; then
                         mkdir -p $sourcesDir
+                        touch $sourcesDir/sileo.sources
                 fi
 
                 if ! [ -s $sourcesDir/elucubratus.sources ]; then
@@ -26,8 +25,14 @@ Components:\
 \
 ;' $sourcesDir/elucubratus.sources
                 fi
+        fi
+fi
 
-                if ! grep -Fxq "URIs: https://repo.getsileo.app/" $sourcesDir/sileo.sources ;
+if ! [ -s $sourcesDir/sileo.sources ]; then
+        echo -e "" > $sourcesDir/sileo.sources
+fi
+
+if ! grep -Fxq "URIs: https://repo.getsileo.app/" $sourcesDir/sileo.sources ;
 then
         echo "Installed Sileo Repo"
         sed -i.bak '1s;^;Types: deb\
@@ -36,12 +41,6 @@ Suites: ./\
 Components:\
 \
 ;' $sourcesDir/sileo.sources
-                fi
-        fi
-fi
-
-if ! [ -s $sourcesDir/sileo.sources ]; then
-        echo -e "" > $sourcesDir/sileo.sources
 fi
 
 if ! grep -Fxq "URIs: https://repounclutter.coolstar.org/" $sourcesDir/sileo.sources ;
