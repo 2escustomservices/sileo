@@ -1,7 +1,7 @@
 Package: org.coolstar.sileo
 Priority: required
 Section: Packaging
-Maintainer: CoolStar <coolstarorganization@gmail.com>
+Maintainer: Aarnav Tale <support@renai.me>
 Architecture: iphoneos-arm
 Version: 2.0.2-tale1
 Icon: https://getsileo.app/img/icon.png
